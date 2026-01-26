@@ -183,6 +183,7 @@ int cbor_get_info() {
         CBOR_CHECK(cbor_encode_uint(&arrayEncoder, CTAP_CONFIG_PHY_LED_BTNESS));
         CBOR_CHECK(cbor_encode_uint(&arrayEncoder, CTAP_CONFIG_PHY_LED_GPIO));
         CBOR_CHECK(cbor_encode_uint(&arrayEncoder, CTAP_CONFIG_PHY_OPTS));
+        CBOR_CHECK(cbor_encode_uint(&arrayEncoder, CTAP_CONFIG_PHY_UP_BTN));
 #endif
         CBOR_CHECK(cbor_encoder_close_container(&mapEncoder, &arrayEncoder));
 #ifndef ENABLE_EMULATION

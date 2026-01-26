@@ -148,7 +148,8 @@ int cbor_config(const uint8_t *data, size_t len) {
         const bool is_phy = (vendorCommandId == CTAP_CONFIG_PHY_VIDPID ||
             vendorCommandId == CTAP_CONFIG_PHY_LED_GPIO ||
             vendorCommandId == CTAP_CONFIG_PHY_LED_BTNESS ||
-            vendorCommandId == CTAP_CONFIG_PHY_OPTS);
+            vendorCommandId == CTAP_CONFIG_PHY_OPTS ||
+            vendorCommandId == CTAP_CONFIG_PHY_UP_BTN);
 #endif
         if (vendorCommandId == CTAP_CONFIG_AUT_DISABLE){
             if (!file_has_data(ef_keydev_enc)) {
@@ -209,6 +210,10 @@ int cbor_config(const uint8_t *data, size_t len) {
         }
         else if (vendorCommandId == CTAP_CONFIG_PHY_OPTS) {
             phy_data.opts = (uint16_t)vendorParamInt;
+        }
+        else if (vendorCommandId == CTAP_CONFIG_PHY_UP_BTN) {
+            phy_data.up_btn = (uint8_t)vendorParamInt;
+            phy_data.up_btn_present = true;
         }
 #endif
         else if (vendorCommandId == CTAP_CONFIG_EA_UPLOAD) {
