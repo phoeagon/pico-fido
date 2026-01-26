@@ -18,7 +18,7 @@ PICO_PLATFORM="rp2350"
 PICO_SDK_TOOLCHAIN="/opt/gcc-arm-none-eabi"
 
 cd build_release
-boards=("waveshare_rp2350_one")
+boards=("waveshare_rp2350_one") # See all_boards.txt
 
 for board_name in "${boards[@]}"
 do
