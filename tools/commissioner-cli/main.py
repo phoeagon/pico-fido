@@ -108,9 +108,7 @@ class PicoFIDODevice:
             if pin is None:
                 pin = getpass.getpass("→ Enter device PIN: ")
             
-            PERMISSION_ACFG = 0x20
-            
-            self.pin_token = self.client_pin.get_pin_token(pin, PERMISSION_ACFG)
+            self.pin_token = self.client_pin.get_pin_token(pin, ClientPin.PERMISSION.AUTHENTICATOR_CFG)
             
             return True
             
@@ -685,6 +683,8 @@ def main():
         clear_screen()
         print_header()
         print(f"Device: {device.get_device_name()}")
+        if not device.info.options.get("clientPin"):
+            console.print("\n[bold yellow]⚠ Device has no PIN set! Use option 6.[/bold yellow]")
         print_menu()
         
         try:
